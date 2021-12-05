@@ -68,13 +68,13 @@ class _ListViewResultState extends State<ListViewResult> {
                         DataCell(Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(e.price.toString()),
+                            Text(r"$" + e.price.toString()),
                           ],
                         )),
                         DataCell(Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(e.distance.toString()),
+                            Text(e.distance.toString() + " km"),
                           ],
                         )),
                       ]))
