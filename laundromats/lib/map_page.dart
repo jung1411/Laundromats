@@ -33,9 +33,6 @@ final laundromatsNearby =
     FirebaseFirestore.instance.collection('laundromatsNearby');
 final myFirestoreData = FirebaseFirestore.instance;
 
-CollectionReference _collectionRef =
-    FirebaseFirestore.instance.collection('laundromatsNearby');
-
 class ScaffoldBodyContent extends StatelessWidget {
   final center = LatLng(43.92484, -78.87578);
   List<LatLng> coordinates = [];
@@ -60,7 +57,7 @@ class ScaffoldBodyContent extends StatelessWidget {
           }
           var docData;
           for (var i = 0; i < snapshot.data.docs.length; i++) {
-            print(i);
+            //print(i);
             docData = snapshot.data.docs[i].data();
             GeoPoint geoPoint = docData['location'];
             double price = docData['price'];
@@ -69,7 +66,7 @@ class ScaffoldBodyContent extends StatelessWidget {
             double lng = geoPoint.longitude;
             LatLng latLng = new LatLng(lat, lng);
             coordinates.add(latLng);
-            print(coordinates);
+            //print(coordinates);
             _markers.add(Marker(
                 point: latLng,
                 builder: (BuildContext context) {
@@ -78,13 +75,13 @@ class ScaffoldBodyContent extends StatelessWidget {
                       Icons.location_on,
                       color: Colors.red,
                     ),
-                    tooltip: 'Increase volume by 10',
+                    //tooltip: 'Increase volume by 10',
                     onPressed: () {
-                      print(price);
+                      //print(price);
                       address = getAddress(lat, lng).toString();
                       showDialog<void>(
                         context: context,
-                        barrierDismissible: false, // user must tap button!
+                        barrierDismissible: true,
                         builder: (BuildContext context) {
                           return AlertDialog(
                             title: const Text('You have chosen a laundromat',
@@ -92,9 +89,14 @@ class ScaffoldBodyContent extends StatelessWidget {
                             content: SingleChildScrollView(
                               child: ListBody(
                                 children: <Widget>[
-                                  Text('Price of the laundromat: \$' +
-                                      price.toString()),
-                                  Text('Address: ' + address.toString()),
+                                  Text('\nPrice of the laundromat: ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                  Text('\$' + price.toString() + '\n'),
+                                  Text('Address: ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                  Text(address.toString()),
                                 ],
                               ),
                             ),
@@ -153,5 +155,5 @@ getAddress(double latitude, double longitude) async {
       placeMark.locality.toString() +
       ', ' +
       placeMark.administrativeArea.toString();
-  print(placeMark.street);
+  //print(placeMark.street);
 }
