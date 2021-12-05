@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'tabs/list_page.dart';
 import 'tabs/main_page.dart';
 import 'tabs/maps_page.dart';
+import 'map_page.dart';
 
 class NavigationBarRoot extends StatelessWidget {
   @override
@@ -33,7 +34,7 @@ class _NavigationContainerState extends State<NavigationContainer>
   _NavigationContainerState() {
     _tabs = [
       MainPage(),
-      MapsPage(),
+      MapPage(),
       ListPage(),
     ];
   }
