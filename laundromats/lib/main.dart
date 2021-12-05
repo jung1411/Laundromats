@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:laundromats/login_page.dart';
+import 'package:laundromats/navBAr.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Lato',
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: NavigationBarRoot(),
     );
   }
 }
