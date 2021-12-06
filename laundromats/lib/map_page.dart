@@ -3,6 +3,7 @@ import 'package:flutter_map/plugin_api.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:laundromats/laundromat_registration.dart';
 import 'main.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -102,10 +103,23 @@ class ScaffoldBodyContent extends StatelessWidget {
                             ),
                             actions: <Widget>[
                               TextButton(
-                                child: const Text('OK'),
+                                child: const Text('Close'),
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              LaundromatRegistration(
+                                                  name: "placeholder",
+                                                  address: address,
+                                                  price: price.toString())));
+                                },
+                                child: const Text("Book Here"),
                               ),
                             ],
                           );

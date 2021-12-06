@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ListViewResult extends StatefulWidget {
+  const ListViewResult({Key? key}) : super(key: key);
+
   @override
   _ListViewResultState createState() => _ListViewResultState();
 }
@@ -13,7 +15,7 @@ class _ListViewResultState extends State<ListViewResult> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("List Results")),
+      appBar: AppBar(title: const Text("List Results")),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,7 +25,7 @@ class _ListViewResultState extends State<ListViewResult> {
               sortAscending: true,
               columns: [
                 DataColumn(
-                    label: Text("Name"),
+                    label: const Text("Name"),
                     onSort: (i, b) {
                       setState(() {
                         if (resultAscending == true) {
@@ -63,21 +65,23 @@ class _ListViewResultState extends State<ListViewResult> {
                     }),
               ],
               rows: results
-                  .map((e) => DataRow(cells: [
-                        DataCell(Text(e.name)),
-                        DataCell(Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(r"$" + e.price.toString()),
-                          ],
-                        )),
-                        DataCell(Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(e.distance.toString() + " km"),
-                          ],
-                        )),
-                      ]))
+                  .map((e) => DataRow(
+                        cells: [
+                          DataCell(Text(e.name)),
+                          DataCell(Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(r"$" + e.price.toString()),
+                            ],
+                          )),
+                          DataCell(Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(e.distance.toString() + " km"),
+                            ],
+                          )),
+                        ],
+                      ))
                   .toList(),
             ),
           ],
