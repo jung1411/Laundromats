@@ -24,32 +24,6 @@ class _MapPage extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(title: Text("Nearby Laundromats")),
       body: ScaffoldBodyContent(),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () async {
-      //     var position = await _getMyLocation();
-      //     setState(() {
-      //       _currentLocation =
-      //           "Position(${position.latitude}, ${position.longitude})";
-      //       latitude = position.latitude;
-      //       longitude = position.longitude;
-      //       getAddress(latitude, longitude);
-      //     });
-      //     print(position);
-      //     getData();
-      //     // _markers.add(Marker(
-      //     //     point: LatLng(latitude, longitude),
-      //     //     builder: (BuildContext context) {
-      //     //       return Icon(
-      //     //         Icons.circle,
-      //     //         color: Colors.blue,
-      //     //       );
-      //     //     }));
-      //     //_polylines.add(Polyline(points: [LatLng(latitude, longitude)]));
-      //     _coord.add(LatLng(latitude, longitude));
-      //   },
-      //   child: const Icon(Icons.add),
-      //   backgroundColor: Colors.blue,
-      // )
     );
   }
 }
@@ -59,44 +33,14 @@ final laundromatsNearby =
     FirebaseFirestore.instance.collection('laundromatsNearby');
 final myFirestoreData = FirebaseFirestore.instance;
 
-CollectionReference _collectionRef =
-    FirebaseFirestore.instance.collection('laundromatsNearby');
-
-Future<void> getData() async {
-  // Get docs from collection reference
-  QuerySnapshot querySnapshot = await _collectionRef.get();
-
-  // Get data from docs and convert map to List
-  final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-  //Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-  // var docData = snapshot.data.docs['laundro1'].data();
-
-  // print(allData);
-
-  // myFirestoreData
-  //     .collection("laundromantsNearby") // your collection
-  //     // .doc('laundro1') //your document
-  //     // .collection("location") //your collection
-  //     .get()
-  //     .then((QuerySnapshot x) {
-  //   x.docs.forEach((f) {
-  //     print('${f.data}}');
-  //     // GeoPoint pos = f.data['position'];
-  //     // LatLng latLng = new LatLng(pos.latitude, pos.longitude);
-  //   });
-  // });
-
-  print(_collectionRef.doc('laundro1').snapshots());
-}
-
 class ScaffoldBodyContent extends StatelessWidget {
   final center = LatLng(43.92484, -78.87578);
   List<LatLng> coordinates = [];
-  List<Marker> _markers = [
+  final List<Marker> _markers = [
     Marker(
         point: LatLng(43.92220383, -78.87558349),
         builder: (BuildContext context) {
-          return Icon(
+          return const Icon(
             Icons.gps_fixed,
             color: Colors.blue,
           );
@@ -113,7 +57,7 @@ class ScaffoldBodyContent extends StatelessWidget {
           }
           var docData;
           for (var i = 0; i < snapshot.data.docs.length; i++) {
-            print(i);
+            //print(i);
             docData = snapshot.data.docs[i].data();
             GeoPoint geoPoint = docData['location'];
             double price = docData['price'];
@@ -122,7 +66,7 @@ class ScaffoldBodyContent extends StatelessWidget {
             double lng = geoPoint.longitude;
             LatLng latLng = new LatLng(lat, lng);
             coordinates.add(latLng);
-            print(coordinates);
+            //print(coordinates);
             _markers.add(Marker(
                 point: latLng,
                 builder: (BuildContext context) {
@@ -131,13 +75,13 @@ class ScaffoldBodyContent extends StatelessWidget {
                       Icons.location_on,
                       color: Colors.red,
                     ),
-                    tooltip: 'Increase volume by 10',
+                    //tooltip: 'Increase volume by 10',
                     onPressed: () {
-                      print(price);
+                      //print(price);
                       address = getAddress(lat, lng).toString();
                       showDialog<void>(
                         context: context,
-                        barrierDismissible: false, // user must tap button!
+                        barrierDismissible: true,
                         builder: (BuildContext context) {
                           return AlertDialog(
                             title: const Text('You have chosen a laundromat',
@@ -145,9 +89,14 @@ class ScaffoldBodyContent extends StatelessWidget {
                             content: SingleChildScrollView(
                               child: ListBody(
                                 children: <Widget>[
-                                  Text('Price of the laundromat: \$' +
-                                      price.toString()),
-                                  Text('Address: ' + address.toString()),
+                                  Text('\nPrice of the laundromat: ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                  Text('\$' + price.toString() + '\n'),
+                                  Text('Address: ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                  Text(address.toString()),
                                 ],
                               ),
                             ),
@@ -179,26 +128,11 @@ class ScaffoldBodyContent extends StatelessWidget {
                     'id': 'mapbox.mapbox-streets-v8'
                   }),
               MarkerLayerOptions(markers: _markers),
-              // PolylineLayerOptions(polylines: [
-              //   Polyline(
-              //       color: Colors.blueAccent, strokeWidth: 2.0, points: _coord),
-              // ]),
             ],
           );
         });
   }
 }
-
-// Widget _buildMarkers(BuildContext context) {
-//   return StreamBuilder(
-//       stream: laundromatsNearby.snapshots(),
-//       builder: (BuildContext context, AsyncSnapshot snapshot) {
-//         if (!snapshot.hasData) {
-//           return CircularProgressIndicator();
-//         }
-//         return
-//       });
-// }
 
 Future<Position> _getMyLocation() async {
   LocationPermission permission;
@@ -221,5 +155,5 @@ getAddress(double latitude, double longitude) async {
       placeMark.locality.toString() +
       ', ' +
       placeMark.administrativeArea.toString();
-  print(placeMark.street);
+  //print(placeMark.street);
 }
