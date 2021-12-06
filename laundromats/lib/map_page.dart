@@ -4,8 +4,6 @@ import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:laundromats/laundromat_registration.dart';
-import 'main.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MapPage extends StatefulWidget {
@@ -23,7 +21,7 @@ class _MapPage extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Nearby Laundromats")),
+      appBar: AppBar(title: const Text("Nearby Laundromats")),
       body: ScaffoldBodyContent(),
     );
   }
@@ -54,7 +52,7 @@ class ScaffoldBodyContent extends StatelessWidget {
         stream: laundromatsNearby.snapshots(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (!snapshot.hasData) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
           var docData;
           for (var i = 0; i < snapshot.data.docs.length; i++) {
@@ -65,7 +63,7 @@ class ScaffoldBodyContent extends StatelessWidget {
             //print(geoPoint);
             double lat = geoPoint.latitude;
             double lng = geoPoint.longitude;
-            LatLng latLng = new LatLng(lat, lng);
+            LatLng latLng = LatLng(lat, lng);
             coordinates.add(latLng);
             //print(coordinates);
             _markers.add(Marker(
@@ -90,11 +88,11 @@ class ScaffoldBodyContent extends StatelessWidget {
                             content: SingleChildScrollView(
                               child: ListBody(
                                 children: <Widget>[
-                                  Text('\nPrice of the laundromat: ',
+                                  const Text('\nPrice of the laundromat: ',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold)),
                                   Text('\$' + price.toString() + '\n'),
-                                  Text('Address: ',
+                                  const Text('Address: ',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold)),
                                   Text(address.toString()),

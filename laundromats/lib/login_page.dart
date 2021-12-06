@@ -5,6 +5,8 @@ import 'package:laundromats/widgets/primary_button.dart';
 import 'theme.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -24,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(24.0, 40.0, 24.0, 0),
+          padding: const EdgeInsets.fromLTRB(24.0, 40.0, 24.0, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -35,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                     'Login to your\naccount',
                     style: heading2.copyWith(color: textBlack),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Image.asset(
@@ -45,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 48,
               ),
               Form(
@@ -60,13 +62,13 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           hintText: 'Email',
                           hintStyle: heading6.copyWith(color: textGrey),
-                          border: OutlineInputBorder(
+                          border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 32,
                     ),
                     Container(
@@ -87,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                                 : Icons.visibility_off_outlined),
                             onPressed: togglePassword,
                           ),
-                          border: OutlineInputBorder(
+                          border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
                         ),
@@ -96,20 +98,20 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CustomCheckbox(),
-                  SizedBox(
+                  const SizedBox(
                     width: 12,
                   ),
                   Text('Remember me', style: regular16pt),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               ),
               CustomPrimaryButton(
@@ -117,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                 textValue: 'Login',
                 textColor: Colors.white,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Center(
@@ -126,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: heading6.copyWith(color: textGrey),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               CustomPrimaryButton(
@@ -134,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                 textValue: 'Login with Google',
                 textColor: textBlack,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Row(

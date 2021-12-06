@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'tabs/list_page.dart';
 import 'tabs/main_page.dart';
-import 'tabs/maps_page.dart';
 import 'map_page.dart';
 
 class NavigationBarRoot extends StatelessWidget {
+  const NavigationBarRoot({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Laundry',
       home: NavigationContainer(),
     );
@@ -16,6 +17,8 @@ class NavigationBarRoot extends StatelessWidget {
 }
 
 class NavigationContainer extends StatefulWidget {
+  const NavigationContainer({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _NavigationContainerState();
@@ -34,7 +37,7 @@ class _NavigationContainerState extends State<NavigationContainer>
   _NavigationContainerState() {
     _tabs = [
       MainPage(),
-      MapPage(),
+      const MapPage(),
       ListPage(),
     ];
   }
@@ -63,8 +66,8 @@ class _NavigationContainerState extends State<NavigationContainer>
               color: Colors.blue[700],
               size: 25.0,
             ),
-            title:
-                Text('Home', style: TextStyle(fontFamily: 'Red Hat Display')),
+            title: const Text('Home',
+                style: TextStyle(fontFamily: 'Red Hat Display')),
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -77,7 +80,8 @@ class _NavigationContainerState extends State<NavigationContainer>
               color: Colors.blue[700],
               size: 25.0,
             ),
-            title: Text('Map', style: TextStyle(fontFamily: 'Red Hat Display')),
+            title: const Text('Map',
+                style: TextStyle(fontFamily: 'Red Hat Display')),
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -90,8 +94,8 @@ class _NavigationContainerState extends State<NavigationContainer>
               color: Colors.blue[700],
               size: 25.0,
             ),
-            title:
-                Text('List', style: TextStyle(fontFamily: 'Red Hat Display')),
+            title: const Text('List',
+                style: TextStyle(fontFamily: 'Red Hat Display')),
           ),
         ],
       ),

@@ -13,6 +13,7 @@ class _ListViewResultState extends State<ListViewResult> {
   int upvoteIndex = 0;
   int dowvoteIndex = 0;
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("List Results")),
@@ -38,7 +39,7 @@ class _ListViewResultState extends State<ListViewResult> {
                       });
                     }),
                 DataColumn(
-                    label: Text('Price'),
+                    label: const Text('Price'),
                     onSort: (i, b) {
                       setState(() {
                         if (resultAscending == true) {
@@ -51,7 +52,7 @@ class _ListViewResultState extends State<ListViewResult> {
                       });
                     }),
                 DataColumn(
-                    label: Text('Distance'),
+                    label: const Text('Distance'),
                     onSort: (i, b) {
                       setState(() {
                         if (resultAscending == true) {
