@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:laundromats/map_page.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'theme.dart';
 
+// ignore: must_be_immutable
 class LaundromatRegistration extends StatefulWidget {
   String address;
   String price;
@@ -166,7 +166,7 @@ class LaundromatNotification {
   }
 
   Future showNotification() async {
-    var android = AndroidNotificationDetails("channelId", "channelName",
+    var android = const AndroidNotificationDetails("channelId", "channelName",
         priority: Priority.high, importance: Importance.max);
 
     var platformDetails = NotificationDetails(android: android);
@@ -177,7 +177,7 @@ class LaundromatNotification {
 
   Future showScheduledNotification(
       DateTime scheduledTime, String address) async {
-    var android = AndroidNotificationDetails("channelId", "channelName",
+    var android = const AndroidNotificationDetails("channelId", "channelName",
         priority: Priority.high, importance: Importance.max);
     var platformDetails = NotificationDetails(android: android);
     await notification.zonedSchedule(

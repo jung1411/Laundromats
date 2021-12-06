@@ -35,7 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     'Register new\naccount',
                     style: heading2.copyWith(color: textBlack),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Image.asset(
@@ -45,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 48,
               ),
               Form(
@@ -60,13 +60,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         decoration: InputDecoration(
                           hintText: 'Email',
                           hintStyle: heading6.copyWith(color: textGrey),
-                          border: OutlineInputBorder(
+                          border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 32,
                     ),
                     Container(
@@ -87,13 +87,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                 : Icons.visibility_off_outlined),
                             onPressed: togglePassword,
                           ),
-                          border: OutlineInputBorder(
+                          border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 32,
                     ),
                     Container(
@@ -119,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               });
                             },
                           ),
-                          border: OutlineInputBorder(
+                          border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
                         ),
@@ -128,14 +128,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CustomCheckbox(),
-                  SizedBox(
+                  const SizedBox(
                     width: 12,
                   ),
                   Column(
@@ -153,7 +153,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               ),
               CustomPrimaryButton(
@@ -161,7 +161,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 textValue: 'Register',
                 textColor: Colors.white,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Row(
