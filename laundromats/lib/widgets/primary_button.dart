@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundromats/theme.dart';
-import 'package:laundromats/tabs/main_page.dart';
+import 'package:laundromats/map_page.dart';
 
 class CustomPrimaryButton extends StatelessWidget {
   final Color buttonColor;
@@ -28,7 +28,7 @@ class CustomPrimaryButton extends StatelessWidget {
           child: InkWell(
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MainPage()));
+                  context, MaterialPageRoute(builder: (context) => MapPage()));
             },
             borderRadius: BorderRadius.circular(14.0),
             child: Center(
