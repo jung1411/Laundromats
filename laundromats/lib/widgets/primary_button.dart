@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundromats/theme.dart';
+import 'package:laundromats/tabs/main_page.dart';
 
 class CustomPrimaryButton extends StatelessWidget {
   final Color buttonColor;
@@ -25,7 +26,10 @@ class CustomPrimaryButton extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MainPage()));
+            },
             borderRadius: BorderRadius.circular(14.0),
             child: Center(
               child: Text(
@@ -37,6 +41,5 @@ class CustomPrimaryButton extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
